@@ -74,10 +74,10 @@ HomePage.propTypes = {
     React.PropTypes.object,
     React.PropTypes.bool,
   ]),
-  users: React.PropTypes.oneOfType([
-    React.PropTypes.array,
-    React.PropTypes.bool,
-  ]),
+  // users: React.PropTypes.oneOfType([
+  //   React.PropTypes.array,
+  //   React.PropTypes.bool,
+  // ]),
   onSubmit: React.PropTypes.func,
   username: React.PropTypes.string,
   onChangeUsername: React.PropTypes.func,

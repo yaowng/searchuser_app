@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 
 function ResultItem(props){
     return (
-        <Link to={'profile/' + props.username} >
+        <Link to={`/profile/${props.username}`} >
             <img src={`${props.imgUrl}`} width={150} height={150}/>
             <div>
                 <p>{props.username}</p>
