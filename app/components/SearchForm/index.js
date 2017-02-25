@@ -1,41 +1,31 @@
 import React from 'react';
+import Input from './Input';
 
 class SearchForm extends React.Component{
-    constructor(props) {
-        super(props);
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.state = { inputValue: this.props.inputValue };
-    }
+
     render() {
         return(
-            <form onSubmit="{this.handleSubmit}">
-                <input 
-                    type="text" 
-                    placeholder="Search for a user"
-                    value={this.state.inputValue}/>
-                <input 
-                    type="submit" 
-                    value="Search"
-                    onChange={this.handleChange}/>
+            <form onSubmit={this.props.onSubmit}>
+            <label htmlFor="username">
+                <br/>
+                <Input
+                id="username"
+                type="text"
+                placeholder="Search by username"
+                value={this.props.username}
+                onChange={this.props.onChangeUsername}
+                />
+            </label>
+            <Input type="submit" value="Search" />
             </form>
         );
-    }
-
-    handleChange(e) {
-        this.setState({inputValue: e.target.value});
-    }
-
-    handleSubmit(e) {
-        e.preventDefault();
-        if (!this.state.inputValue) { return; }
-        this.props.onSubmit(this.state.inputValue);
     }
 }
 
 SearchForm.propTypes = {
     onSubmit: React.PropTypes.func.isRequired,
-    inputValue: React.PropTypes.string.isRequired,
+    onChangeUsername: React.PropTypes.func.isRequired,
+    username: React.PropTypes.string.isRequired,
 };
 
 SearchForm.defaultProps = {

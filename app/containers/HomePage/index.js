@@ -16,6 +16,7 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import Header from 'components/Header';
+import SearchForm from 'components/SearchForm';
 import SearchResult from 'components/SearchResult';
 import { 
   searchUsername,
@@ -49,19 +50,10 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
     //console.log(users);
     return (
       <div>
-        <form onSubmit={this.props.onSubmit}>
-          <label htmlFor="username">
-            <FormattedMessage {...messages.searchLabel} />
-            <br/>
-            <input
-              id="username"
-              type="text"
-              placeholder="Search by username"
-              value={this.props.username}
-              onChange={this.props.onChangeUsername}
-            />
-          </label>
-        </form>
+        <SearchForm 
+          onSubmit={this.props.onSubmit} 
+          onChangeUsername={this.props.onChangeUsername}
+          username={this.props.username} />
         <SearchResult {...usersListProps} />
       </div>
     );

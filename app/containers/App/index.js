@@ -12,6 +12,15 @@
  */
 
 import React from 'react';
+import styled from 'styled-components';
+import Header from 'components/Header';
+
+const ChildWrapper = styled.div`
+  position: static;
+  padding-top: 40px;
+  margin: 0 20px 0 20px;
+  overflow: hidden;
+`;
 
 export default class App extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
@@ -22,7 +31,10 @@ export default class App extends React.PureComponent { // eslint-disable-line re
   render() {
     return (
       <div>
-        {React.Children.toArray(this.props.children)}
+        <Header />
+        <ChildWrapper>
+          {React.Children.toArray(this.props.children)}
+        </ChildWrapper>
       </div>
     );
   }
