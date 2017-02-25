@@ -9,7 +9,10 @@ const Ul = styled.ul`
 
 export default Ul;
 
-
+  // &.items > li:nth-child(3n+4) {
+  //   clear:left;
+  //   float:left;
+  // }
   // margin: 0;
   // width: 100%;
   // max-height: 30em;
