@@ -26,7 +26,7 @@ function SearchResult({ loading, error, users }){
         <div>
             <br/>
             <Wrapper>
-                <Ul>
+                <Ul id="list-searchresult">
                     {content}
                 </Ul>
             </Wrapper>

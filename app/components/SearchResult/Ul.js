@@ -2,8 +2,10 @@ import styled from 'styled-components';
 
 const Ul = styled.ul`
   list-style: none;
-  display: -webkit-flex;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  width: 100%;
   height: 100%;
 `;
 

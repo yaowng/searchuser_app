@@ -24,8 +24,8 @@ export function* getData() {
   const requestReposURL = `https://api.github.com/users/${username}/repos`;
 
   try {
-    console.log(requestProfileURL);
-    console.log(requestReposURL);
+    // console.log(requestProfileURL);
+    // console.log(requestReposURL);
     // Call our request helper (see 'utils/request')
     const profile = yield call(request, requestProfileURL);
     const repos = yield call(request, requestReposURL);

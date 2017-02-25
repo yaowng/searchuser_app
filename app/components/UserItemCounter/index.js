@@ -13,11 +13,4 @@ function UserItemCounter({profile}) {
 	);
 }
 
-UserItemCounter.propTypes = {
-	profile: React.PropTypes.oneOfType([
-	    React.PropTypes.array,
-	    React.PropTypes.bool,
-    ]), 
-};
-
 export default UserItemCounter;

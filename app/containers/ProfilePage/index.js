@@ -4,46 +4,18 @@ import messages from './messages';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import styled from 'styled-components';
+import { getUserData } from './actions';
 import { 
-  getUserData,
-  } from './actions';
-import { 
-  makeSelectProfile,
-  makeSelectLoading,
-  makeSelectError,
-  makeSelectUsername,
-  makeSelectRepos,
-   } from './selectors';
+  makeSelectProfile, makeSelectLoading, makeSelectError, makeSelectUsername,
+  makeSelectRepos } from './selectors';
+
+import UserBadge from 'components/UserBadge';
+import UserItemCounter from 'components/UserItemCounter';
+import UserRepoList from 'components/UserRepoList';
 
 const Wrapper = styled.div`
   display: inline-grid;
   width: 100%;
-`;
-
-const Div = styled.div`
-  white-space: no-wrap;
-  overflow: hidden;
-`;
-
-const DivRepo = styled.div`
-  float: left;
-  width: 80%;
-  height: 500px;
-  overflow: auto;
-  border: 1px solid black;
-`;
-
-const DivProfile = styled.div`
-  float: left;
-  width: 20%;
-`;
-
-const Ul = styled.ul`
-  list-style: none;
-`;
-
-const Li = styled.li`
-  margin: 5px;
 `;
 
 export class ProfilePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
@@ -54,43 +26,15 @@ export class ProfilePage extends React.PureComponent { // eslint-disable-line re
   
   render() {
     const { loading, error, profile, repos, username } = this.props;
-    console.log(repos);
-    let content = (<div></div>);
-    let profileContent = (<div></div>);
-    let totalContent = (<div></div>);
-    let reposContent = (<div></div>);
+    let content, profileContent, totalContent, reposContent = (<div></div>);
 
     if (profile) {
-      profileContent = (
-        <DivProfile>
-          <img src={`${profile.avatar_url}`} width={200} height={200}/>
-          <h2>{profile.name}</h2>
-          <p>{profile.login}</p>
-          <p>{profile.company}</p>
-          <p>{profile.location}</p>
-          <p>{profile.email}</p>
-          <p>{profile.blog}</p>
-        </DivProfile>);
-
-      totalContent = (
-        <Div>
-          <p>
-            <strong>Repositories:</strong> {profile.public_repos} || 
-            <strong>Followers:</strong> {profile.followers} || 
-            <strong>Following:</strong> {profile.following}
-          </p>
-        </Div>);
+      profileContent = (<UserBadge profile={profile} />);
+      totalContent = (<UserItemCounter profile={profile}/>);
     }
 
-
     if (repos) {
-      reposContent = 
-        repos.map((repo, key) => (
-          <Li key={repo.id}>
-            <a href={`${repo.html_url}`} target="_blank">{repo.name}</a>
-            <p><em>{repo.description}</em></p>
-            <hr/>
-          </Li>));
+      reposContent = (<UserRepoList repos={repos}/>);
     }
 
     if (loading) {
@@ -100,11 +44,7 @@ export class ProfilePage extends React.PureComponent { // eslint-disable-line re
         <Wrapper>
           {profileContent}
           {totalContent}
-          <DivRepo>
-            <Ul>
-              {reposContent}
-            </Ul>
-          </DivRepo>        
+          {reposContent}      
         </Wrapper>
       );
     }
@@ -139,7 +79,6 @@ ProfilePage.defaultProps = {
 export function mapDispatchToProps(dispatch) {
   return {
     onInit: (username) => {
-      // if (e !== undefined && e.preventDefault) e.preventDefault();
       dispatch(getUserData(username));
     },
   };

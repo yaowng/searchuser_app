@@ -8,7 +8,7 @@ const Wrapper = styled.div`
   background-color: white;
   border: 1px solid #ccc;
   border-radius: 3px;
-  overflow: auto;
+  overflow: hidden;
 `;
 
 export default Wrapper;
