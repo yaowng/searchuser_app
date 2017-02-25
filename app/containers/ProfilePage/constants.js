@@ -9,6 +9,8 @@
  * export const YOUR_ACTION_CONSTANT = 'yourproject/YourContainer/YOUR_ACTION_CONSTANT';
  */
 
-export const GET_USERPROFILE = 'search-app/Home/GET_USERPROFILE';
-export const GET_USERPROFILE_SUCCESS = 'search-app/Home/GET_USERPROFILE_SUCCESS';
-export const GET_USERPROFILE_ERROR = 'search-app/Home/GET_USERPROFILE_ERROR';
+export const GET_USERDATA = 'search-app/Profile/GET_USERDATA';
+export const GET_USERDATA_ERROR = 'search-app/Profile/GET_USERDATA';
+export const GET_USERPROFILE_SUCCESS = 'search-app/Profile/GET_USERPROFILE_SUCCESS';
+export const GET_USERREPOS = 'search-app/Profile/GET_USERREPOS';
+export const GET_USERREPOS_SUCCESS = 'search-app/Profile/GET_USERREPOS_SUCCESS';

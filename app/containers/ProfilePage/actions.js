@@ -1,28 +1,58 @@
 /* Profile Actions */
 
-import {
-    GET_USERPROFILE,
-    GET_USERPROFILE_SUCCESS,
-    GET_USERPROFILE_ERROR,
-} from './constants';
+import * as types from './constants';
 
-export function getUserProfile(username) {
+// import {
+//     GET_USERPROFILE,
+//     GET_USERPROFILE_SUCCESS,
+//     GET_USERPROFILE_ERROR,
+// } from './constants';
+
+export function getUserData(username) {
     return {
-        type: GET_USERPROFILE,
+        type: types.GET_USERDATA,
         username,
+    };
+}
+
+export function getUserDataError(error) {
+    return {
+        type: types.GET_USERDATA_ERROR,
+        error,
     };
 }
 
 export function getUserProfileSuccess(profile) {
     return {
-        type: GET_USERPROFILE_SUCCESS,
+        type: types.GET_USERPROFILE_SUCCESS,
         profile,
     };
 }
 
-export function getUserProfileError(error) {
+export function getUserReposSuccess(repos) {
     return {
-        type: GET_USERPROFILE_ERROR,
-        error,
-    }
+        type: types.GET_USERREPOS_SUCCESS,
+        repos,
+    };
 }
+
+// export function getUserProfileError(error) {
+//     return {
+//         type: types.GET_USERPROFILE_ERROR,
+//         error,
+//     }
+// }
+
+// export function getUserRepos(username) {
+//     return {
+//         type: types.GET_USERREPOS,
+//         username,
+//     };
+// }
+
+// export function getUserReposError(error) {
+//     return {
+//         type: types.GET_USERREPOS_ERROR,
+//         error,
+//     }
+// }

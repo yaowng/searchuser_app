@@ -23,7 +23,12 @@ const makeSelectError = () => createSelector(
 
 const makeSelectProfile = () => createSelector(
   selectProfile,
-  (profileState) => profileState.getIn(['data','results'])
+  (profileState) => profileState.getIn(['profileData','profile'])
+);
+
+const makeSelectRepos = () => createSelector(
+  selectProfile,
+  (profileState) => profileState.getIn(['reposData','repositories'])
 );
 
 export {
@@ -32,4 +37,5 @@ export {
   makeSelectLoading,
   makeSelectError,
   makeSelectProfile,
+  makeSelectRepos,
 };
