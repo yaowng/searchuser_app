@@ -5,8 +5,13 @@ import Li from './Li';
 import ResultItem from 'components/ResultItem';
 
 function SearchResult({ loading, error, users }){
-    let content = (<div></div>);
+    let content = (<div>Please search by username</div>);
     let totalCount = users.total_count;
+
+    if(loading){
+        content = (<div>Loading...</div>);
+    }
+
     if (users){
         content = users.items.map((item, index)=>(
             <Li key={`item-${index}`}>
@@ -15,8 +20,6 @@ function SearchResult({ loading, error, users }){
                     imgUrl={item.avatar_url}/>
             </Li>
         ));
-    } else {
-        content = (<div>Please search by username</div>);
     }
 
     return(

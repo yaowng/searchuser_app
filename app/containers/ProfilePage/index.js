@@ -56,42 +56,63 @@ export class ProfilePage extends React.PureComponent { // eslint-disable-line re
     const { loading, error, profile, repos, username } = this.props;
     console.log(repos);
     let content = (<div></div>);
+    let profileContent = (<div></div>);
+    let totalContent = (<div></div>);
+    let reposContent = (<div></div>);
 
-    if (repos){
-      content = repos.map((repo, key) => (
-                          <Li key={repo.id}>
-                            <a href={`${repo.html_url}`} target="_blank">{repo.name}</a>
-                            <p><em>{repo.description}</em></p>
-                            <hr/>
-                          </Li>));
+    if (profile) {
+      profileContent = (
+        <DivProfile>
+          <img src={`${profile.avatar_url}`} width={200} height={200}/>
+          <h2>{profile.name}</h2>
+          <p>{profile.login}</p>
+          <p>{profile.company}</p>
+          <p>{profile.location}</p>
+          <p>{profile.email}</p>
+          <p>{profile.blog}</p>
+        </DivProfile>);
+
+      totalContent = (
+        <Div>
+          <p>
+            <strong>Repositories:</strong> {profile.public_repos} || 
+            <strong>Followers:</strong> {profile.followers} || 
+            <strong>Following:</strong> {profile.following}
+          </p>
+        </Div>);
+    }
+
+
+    if (repos) {
+      reposContent = 
+        repos.map((repo, key) => (
+          <Li key={repo.id}>
+            <a href={`${repo.html_url}`} target="_blank">{repo.name}</a>
+            <p><em>{repo.description}</em></p>
+            <hr/>
+          </Li>));
+    }
+
+    if (loading) {
+      content = (<p>Loading...</p>);
+    } else {
+      content = (
+        <Wrapper>
+          {profileContent}
+          {totalContent}
+          <DivRepo>
+            <Ul>
+              {reposContent}
+            </Ul>
+          </DivRepo>        
+        </Wrapper>
+      );
     }
 
     return (
       <div>
         <h1>Profile</h1>
-        <Wrapper>
-          <DivProfile>
-            <img src={`${profile.avatar_url}`} width={200} height={200}/>
-            <h2>{profile.name}</h2>
-            <p>{profile.login}</p>
-            <p>{profile.company}</p>
-            <p>{profile.location}</p>
-            <p>{profile.email}</p>
-            <p>{profile.blog}</p>
-          </DivProfile>
-          <Div>
-            <p>
-              <strong>Repositories:</strong> {profile.public_repos} || 
-              <strong>Followers:</strong> {profile.followers} || 
-              <strong>Following:</strong> {profile.following}
-            </p>
-          </Div>
-          <DivRepo>
-            <Ul>
-              {content}
-            </Ul>
-          </DivRepo>
-        </Wrapper>
+        {content}
       </div>
     );
   }
