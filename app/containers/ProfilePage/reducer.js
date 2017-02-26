@@ -19,36 +19,36 @@ import * as types from './constants';
 
 // The initial state of the App
 const initialState = fromJS({
-    username: '',
-    loading: false,
-    error: false,
-    profileData: { profile: false, },
-    reposData: { repositories: false, },
+  username: '',
+  loading: false,
+  error: false,
+  profileData: { profile: false },
+  reposData: { repositories: false },
 });
 
 function profileReducer(state = initialState, action) {
   switch (action.type) {
     case types.GET_USERDATA:
-        return state
-            .set('loading', true)
-            .set('error', false)
-            .set('username', action.username)
-            .setIn(['profileData','profile'], false)
-            .setIn(['reposData','repositories'], false);
+      return state
+          .set('loading', true)
+          .set('error', false)
+          .set('username', action.username)
+          .setIn(['profileData', 'profile'], false)
+          .setIn(['reposData', 'repositories'], false);
     case types.GET_USERPROFILE_SUCCESS:
-        return state
-            .setIn(['profileData','profile'], action.profile)
-            .set('loading',false)
+      return state
+          .setIn(['profileData', 'profile'], action.profile)
+          .set('loading', false);
     case types.GET_USERREPOS_SUCCESS:
-        return state
-            .setIn(['reposData','repositories'], action.repos)
-            .set('loading',false)            
+      return state
+          .setIn(['reposData', 'repositories'], action.repos)
+          .set('loading', false);
     case types.GET_USERDATA_ERROR:
-        return state
-            .set('loading',false)
-            .set('error', action.error);                        
+      return state
+          .set('loading', false)
+          .set('error', action.error);
     default:
-        return state;
+      return state;
   }
 }
 

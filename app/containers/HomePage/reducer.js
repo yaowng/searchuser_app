@@ -24,31 +24,31 @@ const initialState = fromJS({
   loading: false,
   error: false,
   currentUser: false,
-  data: { results: false, },
+  data: { results: false },
 });
 
 function homeReducer(state = initialState, action) {
   switch (action.type) {
     case CHANGE_USERNAME:
-        // Delete prefixed '@' from the github username
-        return state
-        .set('username', action.username.replace(/@/gi, ''));
+      // Delete prefixed '@' from the github username
+      return state
+      .set('username', action.username.replace(/@/gi, ''));
     case SEARCH_USERNAME:
-        return state
-            .set('loading', true)
-            .set('error', false)
-            .setIn(['data','results'], false);
+      return state
+          .set('loading', true)
+          .set('error', false)
+          .setIn(['data', 'results'], false);
     case SEARCH_USERNAME_SUCCESS:
-        return state
-            .setIn(['data','results'], action.users)
-            .set('loading',false)
-            .set('currentUser', action.username);
+      return state
+          .setIn(['data', 'results'], action.users)
+          .set('loading', false)
+          .set('currentUser', action.username);
     case SEARCH_USERNAME_ERROR:
-        return state
-            .set('loading',false)
-            .set('error', action.error);            
+      return state
+          .set('loading', false)
+          .set('error', action.error);
     default:
-        return state;
+      return state;
   }
 }
 

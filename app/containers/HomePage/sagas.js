@@ -1,13 +1,12 @@
 /**
  * Gets the repositories of the user from Github
  */
+import request from 'utils/request';
 
 import { take, call, put, select, cancel, takeLatest } from 'redux-saga/effects';
 import { LOCATION_CHANGE } from 'react-router-redux';
 import { SEARCH_USERNAME } from './constants';
 import { searchSuccess, searchError } from './actions';
-
-import request from 'utils/request';
 import { makeSelectUsername } from './selectors';
 
 /**
@@ -16,7 +15,7 @@ import { makeSelectUsername } from './selectors';
 export function* getUsers() {
   // Select username from store
   const username = yield select(makeSelectUsername());
-  //const requestURL = `https://api.github.com/users/${username}/repos?type=all&sort=updated`;
+  // const requestURL = `https://api.github.com/users/${username}/repos?type=all&sort=updated`;
   const requestURL = `https://api.github.com/search/users?q=${username}`;
   try {
     // Call our request helper (see 'utils/request')

@@ -10,26 +10,22 @@
  */
 
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
-import messages from './messages';
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
 
-import Header from 'components/Header';
 import SearchForm from 'components/SearchForm';
 import SearchResult from 'components/SearchResult';
-import { 
-  searchUsername,
-  changeUsername 
-  } from './actions';
-import { 
+
+// import { FormattedMessage } from 'react-intl';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { searchUsername, changeUsername } from './actions';
+import {
   makeSelectUsername,
-  makeSelectCurrentUser,
   makeSelectUsers,
   makeSelectLoading,
   makeSelectError,
    } from './selectors';
 
+/* eslint react/prop-types: 0 */
 export class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   /**
    * when initial state username is not null, submit the form to load users
@@ -38,22 +34,16 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
     if (this.props.username && this.props.username.trim().length > 0) {
       this.props.onSubmit();
     }
-  } 
- 
- render() {
-    const { loading, error, users } = this.props;
-    const usersListProps = {
-      loading,
-      error,
-      users,
-    };
-    //console.log(users);
+  }
+
+  render() {
+    const { loading, error, users, onSubmit, onChangeUsername, username } = this.props;
+    const searchFormProps = { onSubmit, onChangeUsername, username };
+    const usersListProps = { loading, error, users };
+    // console.log(users);
     return (
       <div>
-        <SearchForm 
-          onSubmit={this.props.onSubmit} 
-          onChangeUsername={this.props.onChangeUsername}
-          username={this.props.username} />
+        <SearchForm {...searchFormProps} />
         <SearchResult {...usersListProps} />
       </div>
     );
@@ -66,6 +56,7 @@ HomePage.propTypes = {
     React.PropTypes.object,
     React.PropTypes.bool,
   ]),
+  users: React.PropTypes.any,
   // users: React.PropTypes.oneOfType([
   //   React.PropTypes.array,
   //   React.PropTypes.bool,

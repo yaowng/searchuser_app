@@ -9,50 +9,29 @@ import * as types from './constants';
 // } from './constants';
 
 export function getUserData(username) {
-    return {
-        type: types.GET_USERDATA,
-        username,
-    };
+  return {
+    type: types.GET_USERDATA,
+    username,
+  };
 }
 
 export function getUserDataError(error) {
-    return {
-        type: types.GET_USERDATA_ERROR,
-        error,
-    };
+  return {
+    type: types.GET_USERDATA_ERROR,
+    error,
+  };
 }
 
 export function getUserProfileSuccess(profile) {
-    return {
-        type: types.GET_USERPROFILE_SUCCESS,
-        profile,
-    };
+  return {
+    type: types.GET_USERPROFILE_SUCCESS,
+    profile,
+  };
 }
 
 export function getUserReposSuccess(repos) {
-    return {
-        type: types.GET_USERREPOS_SUCCESS,
-        repos,
-    };
+  return {
+    type: types.GET_USERREPOS_SUCCESS,
+    repos,
+  };
 }
-
-// export function getUserProfileError(error) {
-//     return {
-//         type: types.GET_USERPROFILE_ERROR,
-//         error,
-//     }
-// }
-
-// export function getUserRepos(username) {
-//     return {
-//         type: types.GET_USERREPOS,
-//         username,
-//     };
-// }
-
-// export function getUserReposError(error) {
-//     return {
-//         type: types.GET_USERREPOS_ERROR,
-//         error,
-//     }
-// }

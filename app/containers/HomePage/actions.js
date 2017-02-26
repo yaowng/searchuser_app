@@ -15,22 +15,22 @@ export function changeUsername(username) {
 }
 
 export function searchUsername() {
-    return {
-        type: SEARCH_USERNAME,
-    };
+  return {
+    type: SEARCH_USERNAME,
+  };
 }
 
 export function searchSuccess(users, username) {
-    return {
-        type: SEARCH_USERNAME_SUCCESS,
-        users,
-        username,
-    };
+  return {
+    type: SEARCH_USERNAME_SUCCESS,
+    users,
+    username,
+  };
 }
 
 export function searchError(error) {
-    return {
-        type: SEARCH_USERNAME_ERROR,
-        error,
-    }
+  return {
+    type: SEARCH_USERNAME_ERROR,
+    error,
+  };
 }

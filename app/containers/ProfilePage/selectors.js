@@ -1,7 +1,6 @@
 /**
  * Homepage selectors
  */
-
 import { createSelector } from 'reselect';
 
 const selectProfile = (state) => state.get('profile');
@@ -23,12 +22,12 @@ const makeSelectError = () => createSelector(
 
 const makeSelectProfile = () => createSelector(
   selectProfile,
-  (profileState) => profileState.getIn(['profileData','profile'])
+  (profileState) => profileState.getIn(['profileData', 'profile'])
 );
 
 const makeSelectRepos = () => createSelector(
   selectProfile,
-  (profileState) => profileState.getIn(['reposData','repositories'])
+  (profileState) => profileState.getIn(['reposData', 'repositories'])
 );
 
 export {

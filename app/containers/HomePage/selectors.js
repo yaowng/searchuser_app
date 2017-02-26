@@ -28,7 +28,7 @@ const makeSelectError = () => createSelector(
 
 const makeSelectUsers = () => createSelector(
   selectHome,
-  (homeState) => homeState.getIn(['data','results'])
+  (homeState) => homeState.getIn(['data', 'results'])
 );
 
 export {

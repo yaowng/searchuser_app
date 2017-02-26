@@ -1,16 +1,14 @@
 /**
  * Gets the repositories of the user from Github
  */
-
+import request from 'utils/request';
 import { take, call, put, select, cancel, takeLatest } from 'redux-saga/effects';
 import { LOCATION_CHANGE } from 'react-router-redux';
 import { GET_USERDATA } from './constants';
-import { 
-  getUserProfileSuccess, 
+import {
+  getUserProfileSuccess,
   getUserReposSuccess,
   getUserDataError } from './actions';
-
-import request from 'utils/request';
 import { makeSelectUsername } from './selectors';
 
 /**
@@ -19,7 +17,7 @@ import { makeSelectUsername } from './selectors';
 export function* getData() {
   // Select username from store
   const username = yield select(makeSelectUsername());
-  //const requestURL = `https://api.github.com/users/${username}/repos?type=all&sort=updated`;
+  // const requestURL = `https://api.github.com/users/${username}/repos?type=all&sort=updated`;
   const requestProfileURL = `https://api.github.com/users/${username}`;
   const requestReposURL = `https://api.github.com/users/${username}/repos`;
 
@@ -36,24 +34,6 @@ export function* getData() {
     ];
   } catch (err) {
     yield put(getUserDataError(err));
-  }
-}
-
-/**
- * Github user repos request/response handler
- */
-export function* getRepos() {
-  // Select username from store
-  const username = yield select(makeSelectUsername());
-  //const requestURL = `https://api.github.com/users/${username}/repos?type=all&sort=updated`;
-  const requestURL = `https://api.github.com/users/${username}/repos`;
-  try {
-    console.log(requestURL);
-    // Call our request helper (see 'utils/request')
-    const repos = yield call(request, requestURL);
-    yield put(getUserReposSuccess(repos));
-  } catch (err) {
-    yield put(getUserReposError(err));
   }
 }
 
