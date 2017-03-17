@@ -1,4 +1,4 @@
-# `Oddle Test`
+# `Search User Application`
 
 This project uses [react boilerplate][react-boilerplate] to quickly start the web development.
 
