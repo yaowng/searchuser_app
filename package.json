@@ -1,10 +1,10 @@
 {
-  "name": "oddle-test",
+  "name": "searchuser_app",
   "version": "3.4.0",
-  "description": "oddle test",
+  "description": "React + Redux app",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yaowng/oddle_test.git"
+    "url": "https://github.com/yaowng/searchuser_app.git"
   },
   "engines": {
     "npm": ">=3",
